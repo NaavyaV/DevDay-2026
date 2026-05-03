@@ -22,8 +22,15 @@ export default function RegisterPage() {
 
     try { 
       // code here
+      await registerUser(email, password);
+      navigate('/login'); // Successs -> go sign in
     } catch (err) {
       // Write if/else statements here!
+      if (err.code === 'auth/email-already-in-use') {
+        setError('An account with this email already exists; please log in instead.');
+      } else {
+        setError('Failed to create an account; please try again.');
+      }
     }
 
     setLoading(false);

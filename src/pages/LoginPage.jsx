@@ -16,8 +16,11 @@ export default function LoginPage() {
 
     try {
       // Write your code here!
+      await loginUser(email, password);
+      navigate('/');
     } catch (err) {
       // And here too
+      setError('Invalid email or password; please try again.');
     }
     
     setLoading(false);
